@@ -24,3 +24,12 @@ jobs:
 
       - name: Run tests
         run: ./mvnw test
+
+      - name: Build JAR
+        run: ./mvnw package -DskipTests
+
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: spring-boot-jar
+          path: target/*.jar
